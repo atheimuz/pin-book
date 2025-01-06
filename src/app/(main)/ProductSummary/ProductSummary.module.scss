@@ -1,0 +1,46 @@
+.wrapper {
+    margin-top: 12px;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid #ebebeb;
+    border-radius: 12px;
+    transition: background-color 0.3s;
+
+    &:hover {
+        border-color: #f1f1f1;
+        background-color: #f1f1f1;
+    }
+}
+
+.thumbnail {
+    display: block;
+    width: 60px;
+    margin-right: 12px;
+    border-radius: 12px;
+}
+
+.textBox {
+    overflow: hidden;
+    flex: 1;
+
+    p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+.title {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.desc {
+    margin-top: 4px;
+    font-size: 14px;
+    color: gray;
+}
