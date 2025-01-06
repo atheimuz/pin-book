@@ -1,0 +1,13 @@
+.wrapper {
+    display: flex;
+    gap: 12px;
+    max-height: 80vh;
+}
+
+.mainImage {
+    display: block;
+    width: calc(100% - 130px);
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 16px;
+}
