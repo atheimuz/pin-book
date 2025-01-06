@@ -1,8 +1,10 @@
-import { getProductAPI } from "@/lib/remote/product";
+"use client";
+
+import { useProduct } from "@/lib/queries/useProductQuery";
 import styles from "./ProductItem.module.scss";
 
-const ProductItem = async ({ link }: { link: string }) => {
-    const data = await getProductAPI(link);
+const ProductItem = ({ link }: { link: string }) => {
+    const { data } = useProduct(link);
 
     if (!data) return null;
 
