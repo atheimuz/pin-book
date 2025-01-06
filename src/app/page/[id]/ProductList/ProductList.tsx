@@ -1,4 +1,4 @@
-import ProductItem from "@/app/(main)/ProductItem";
+import ProductItem from "@/app/page/[id]/ProductItem";
 import styles from "./ProductList.module.scss";
 
 const productList: string[] = [

@@ -1,4 +1,4 @@
-import ProductList from "@/app/(main)/ProductList";
+import ProductList from "@/app/page/[id]/ProductList";
 import styles from "./PinBook.module.scss";
 
 const PinBook = () => {
