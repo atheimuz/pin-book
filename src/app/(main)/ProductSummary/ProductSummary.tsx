@@ -1,6 +1,13 @@
+"use client";
+
+import { useProductStore } from "@/lib/store/product";
 import styles from "./ProductSummary.module.scss";
 
-const ProductSummary = async () => {
+const ProductSummary = () => {
+    const summary = useProductStore((state) => state.summary);
+
+    if (!summary) return null;
+
     return (
         <div className={styles.wrapper}>
             <a href="https://ohou.se/productions/1803860/selling" className={styles.link}>

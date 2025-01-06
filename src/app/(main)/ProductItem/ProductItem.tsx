@@ -1,17 +1,20 @@
 "use client";
 
+import { useProductStore } from "@/lib/store/product";
 import { useProduct } from "@/lib/queries/useProductQuery";
 import styles from "./ProductItem.module.scss";
 
 const ProductItem = ({ link }: { link: string }) => {
     const { data } = useProduct(link);
+    const setSummary = useProductStore((state) => state.setSummary);
 
-    if (!data) return null;
+    if ("error" in data) return null;
+    if (!data.thumbnail) return null;
 
     return (
-        <div className={styles.wrapper}>
+        <button type="button" className={styles.wrapper} onClick={() => setSummary(data)}>
             <img className={styles.thumbnail} src={data.thumbnail} />
-        </div>
+        </button>
     );
 };
 
