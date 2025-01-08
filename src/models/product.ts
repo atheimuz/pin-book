@@ -4,3 +4,9 @@ export interface IProduct {
     thumbnail: string | null;
     link: string;
 }
+
+export interface IProductPin {
+    x: number;
+    y: number;
+    link: string;
+}
