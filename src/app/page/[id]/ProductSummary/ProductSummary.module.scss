@@ -13,6 +13,10 @@
     &:hover {
         border-color: #f1f1f1;
         background-color: #f1f1f1;
+
+        .arrowIcon {
+            color: gray;
+        }
     }
 }
 
@@ -45,4 +49,12 @@
     margin-top: 4px;
     font-size: 14px;
     color: gray;
+}
+
+.arrowIcon {
+    display: flex;
+    width: 30px;
+    margin-left: 8px;
+    color: #bfbfbf;
+    transition: color 0.3s;
 }
