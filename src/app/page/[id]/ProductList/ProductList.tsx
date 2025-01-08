@@ -1,20 +1,27 @@
 import ProductItem from "@/app/page/[id]/ProductItem";
 import styles from "./ProductList.module.scss";
+import { Suspense } from "react";
 
-const productList: string[] = [
-    "https://ozip.me/ANNyrhL",
-    "https://ozip.me/QSWwG3k",
-    "https://ohou.se/productions/1543647/selling"
-];
-const ProductList = () => {
+interface Props {
+    list: string[];
+}
+const ProductList = ({ list }: Props) => {
+    if (!list?.length) return null;
+
     return (
         <div className={styles.wrapper}>
             <ul className={styles.items}>
-                {productList.map((link) => (
-                    <li key={link} className={styles.item}>
-                        <ProductItem link={link} />
-                    </li>
-                ))}
+                {list.map((link) => {
+                    if (!link) return null;
+
+                    return (
+                        <li key={link} className={styles.item}>
+                            <Suspense fallback={<p>loading</p>}>
+                                <ProductItem link={link} />
+                            </Suspense>
+                        </li>
+                    );
+                })}
             </ul>
         </div>
     );
