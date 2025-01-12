@@ -1,57 +1,33 @@
 "use client";
 
-import { useState, useRef } from "react";
 import { IProductPin } from "@/models/product";
 import LinkPin from "@/components/LinkPin";
 import ProductList from "@/app/page/[id]/ProductList";
 import styles from "./PinBook.module.scss";
 
-const PinBook = () => {
-    const [pins, setPins] = useState<IProductPin[]>([]);
-    const imageRef = useRef<HTMLImageElement>(null);
+interface PinBoardProps {
+    pins: IProductPin[];
+    image: string;
+    onImageClick?: (event: React.MouseEvent<HTMLImageElement>) => void;
+    onUpdateLink?: (index: number, value: string) => void;
+    onRemovePin?: (index: number) => void;
+}
 
-    const handleImageClick = (event: React.MouseEvent<HTMLImageElement>) => {
-        if (!imageRef.current) return;
-
-        const img = imageRef.current;
-        const rect = img.getBoundingClientRect();
-
-        const x = ((event.clientX - rect.left) / rect.width) * 100;
-        const y = ((event.clientY - rect.top) / rect.height) * 100;
-        setPins((prev) => [...prev, { x, y, link: "" }]);
-    };
-
-    const updatePinLink = ({ index, value }: { index: number; value: string }) => {
-        const newPins = [...pins];
-        newPins[index].link = value;
-        setPins(newPins);
-    };
-
-    const removePin = (index: number) => {
-        const newPins = [...pins];
-        newPins.splice(index, 1);
-        setPins(newPins);
-    };
-
+const PinBook = ({ pins, image, onImageClick, onUpdateLink, onRemovePin }: PinBoardProps) => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.pinBox}>
-                {pins.map((pin, pinIndex) => (
+                {pins.map((pin, index) => (
                     <LinkPin
                         key={`${pin.x} ${pin.y}`}
                         x={pin.x}
                         y={pin.y}
                         link={pin.link}
-                        updateLink={(link) => updatePinLink({ index: pinIndex, value: link })}
-                        removePin={() => removePin(pinIndex)}
+                        updateLink={onUpdateLink ? (link) => onUpdateLink(index, link) : undefined}
+                        removePin={onRemovePin ? () => onRemovePin(index) : undefined}
                     />
                 ))}
-                <img
-                    ref={imageRef}
-                    onClick={handleImageClick}
-                    className={styles.mainImage}
-                    src="https://prs.ohouse.com/apne2/any/v1-313723627950208.jpg?w=720"
-                />
+                <img className={styles.mainImage} src={image} onClick={onImageClick} />
             </div>
             <ProductList list={pins.map((item) => item.link)} />
         </div>
