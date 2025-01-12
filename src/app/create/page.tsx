@@ -1,12 +1,12 @@
-import ViewPin from "@/app/page/[id]/ViewPin";
+import CreatePin from "@/app/page/[id]/CreatePin";
 import ProductSummary from "@/app/page/[id]/ProductSummary";
 import styles from "./page.module.scss";
 
-export default function DetailPage() {
+export default function CreatePage() {
     return (
         <div className={styles.wrapper}>
             <div className={styles.content}>
-                <ViewPin pinList={[]} image="" />
+                <CreatePin />
                 <ProductSummary />
             </div>
         </div>
