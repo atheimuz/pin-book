@@ -8,8 +8,8 @@ interface Props {
     x: number;
     y: number;
     link: string;
-    updateLink: (link: string) => void;
-    removePin: () => void;
+    updateLink?: (link: string) => void;
+    removePin?: () => void;
 }
 const LinkPin = ({ x, y, link, updateLink, removePin }: Props) => {
     const inputRef = useRef<HTMLInputElement | null>(null);
@@ -18,13 +18,13 @@ const LinkPin = ({ x, y, link, updateLink, removePin }: Props) => {
     const handleUpdateLink = () => {
         const inputValue = inputRef.current?.value;
         if (!inputValue) return;
-        updateLink(inputValue);
+        updateLink?.(inputValue);
     };
 
     const handleRemovePin = () => {
         const inputValue = inputRef.current?.value;
         if (inputValue) return null;
-        removePin();
+        removePin?.();
     };
 
     useEffect(() => {
