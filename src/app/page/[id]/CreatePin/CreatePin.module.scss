@@ -1,0 +1,26 @@
+.createBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    border: 1px dashed #ebebeb;
+    border-radius: 20px;
+    transition: border-color 0.2s;
+    cursor: pointer;
+
+    &:hover {
+        border-color: black;
+    }
+}
+
+.createBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+}

@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import { IProductPin } from "@/models/product";
+import PlusIcon from "@/components/icons/Plus";
 import PinBook from "../PinBook";
+import styles from "./CreatePin.module.scss";
 
 const CreatePin = () => {
     const [localPins, setLocalPins] = useState<IProductPin[]>([]);
@@ -49,7 +51,14 @@ const CreatePin = () => {
             onRemovePin={removePin}
         />
     ) : (
-        <input type="file" onChange={handleImageUpload} />
+        <div className={styles.wrapper}>
+            <label className={styles.createBox}>
+                <input type="file" onChange={handleImageUpload} hidden />
+                <button type="button" className={styles.createBtn}>
+                    <PlusIcon />
+                </button>
+            </label>
+        </div>
     );
 };
 
