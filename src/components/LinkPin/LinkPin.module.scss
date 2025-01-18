@@ -31,6 +31,7 @@
     display: flex;
     flex-shrink: 0;
     align-items: center;
+    gap: 4px;
     padding: 4px;
     position: absolute;
     top: 100%;
@@ -44,7 +45,6 @@
     input {
         width: 150px;
         height: 32px;
-        margin-right: 4px;
         padding: 0 8px;
         border: 1px solid #ebebeb;
         border-radius: 4px;

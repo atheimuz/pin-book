@@ -67,6 +67,11 @@ const LinkPin = ({ x, y, link, updateLink, removePin }: Props) => {
                 <button type="button" onClick={handleUpdateLink}>
                     확인
                 </button>
+                {link && removePin && (
+                    <button type="button" onClick={removePin}>
+                        삭제
+                    </button>
+                )}
             </div>
         </div>
     );
