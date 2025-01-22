@@ -45,16 +45,13 @@ const CreatePin = () => {
     return (
         <div className={styles.wrapper}>
             {localImage ? (
-                <>
-                    <div className={styles.msg}>원하는 위치에 핀을 지정해주세요</div>
-                    <PinBook
-                        pins={localPins}
-                        image={localImage as string}
-                        onImageClick={handleImageClick}
-                        onUpdateLink={updatePinLink}
-                        onRemovePin={removePin}
-                    />
-                </>
+                <PinBook
+                    pins={localPins}
+                    image={localImage as string}
+                    onImageClick={handleImageClick}
+                    onUpdateLink={updatePinLink}
+                    onRemovePin={removePin}
+                />
             ) : (
                 <label className={styles.createBox}>
                     <input type="file" onChange={handleImageUpload} hidden />

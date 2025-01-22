@@ -1,7 +1,15 @@
+@keyframes flicker {
+    50% {
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+    100% {
+        background-color: transparent;
+    }
+}
+
 .wrapper {
     display: flex;
     gap: 12px;
-    max-height: 80vh;
 }
 
 .pinBox {
@@ -10,10 +18,34 @@
     max-height: 100%;
 }
 
+.imageArea {
+    display: inline-flex;
+    position: relative;
+}
+
 .mainImage {
     display: block;
     width: 100%;
     max-height: 100%;
     border-radius: 16px;
     object-fit: contain;
+
+    &:before {
+        content: "";
+        display: block;
+    }
+}
+
+.flickerBox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 16px;
+
+    &.active {
+        animation: flicker 2s infinite;
+        animation-delay: 1s;
+    }
 }

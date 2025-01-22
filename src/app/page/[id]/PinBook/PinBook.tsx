@@ -1,5 +1,6 @@
 "use client";
 
+import cx from "classnames";
 import { IProductPin } from "@/models/product";
 import LinkPin from "@/components/LinkPin";
 import ProductList from "@/app/page/[id]/ProductList";
@@ -17,16 +18,19 @@ const PinBook = ({ pins, image, onImageClick, onUpdateLink, onRemovePin }: PinBo
     return (
         <div className={styles.wrapper}>
             <div className={styles.pinBox}>
-                {pins.map((pin, index) => (
-                    <LinkPin
-                        key={`${pin.x} ${pin.y}`}
-                        x={pin.x}
-                        y={pin.y}
-                        link={pin.link}
-                        updateLink={onUpdateLink ? (link) => onUpdateLink(index, link) : undefined}
-                        removePin={onRemovePin ? () => onRemovePin(index) : undefined}
-                    />
-                ))}
+                <div className={styles.imageArea}>
+                    {pins.map((pin, index) => (
+                        <LinkPin
+                            key={`${pin.x} ${pin.y}`}
+                            x={pin.x}
+                            y={pin.y}
+                            link={pin.link}
+                            updateLink={
+                                onUpdateLink ? (link) => onUpdateLink(index, link) : undefined
+                            }
+                            removePin={onRemovePin ? () => onRemovePin(index) : undefined}
+                        />
+                    ))}
                     <img className={styles.mainImage} src={image} />
                     <div
                         className={cx(styles.flickerBox, { [styles.active]: !pins.length })}
