@@ -8,7 +8,7 @@ interface IBook extends Document {
     createdAt: Date;
 }
 
-const MenuSchema: Schema<IBook> = new mongoose.Schema({
+const BookSchema: Schema<IBook> = new mongoose.Schema({
     image: {
         type: String,
         required: true
@@ -29,7 +29,7 @@ const MenuSchema: Schema<IBook> = new mongoose.Schema({
     }
 });
 
-const Book: Model<IBook> = mongoose.models.Menu || mongoose.model<IBook>("Menu", MenuSchema);
+const Book: Model<IBook> = mongoose.models.Book || mongoose.model<IBook>("Book", BookSchema);
 
 export default Book;
 export type { IBook };
