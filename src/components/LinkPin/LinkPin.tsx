@@ -17,8 +17,8 @@ const LinkPin = ({ x, y, link, updateLink, removePin }: Props) => {
 
     const handleUpdateLink = () => {
         const inputValue = inputRef.current?.value;
-        if (!inputValue) return;
-        updateLink?.(inputValue);
+        if (!inputValue || !updateLink) return;
+        updateLink(inputValue);
     };
 
     const handleRemovePin = () => {
@@ -58,15 +58,18 @@ const LinkPin = ({ x, y, link, updateLink, removePin }: Props) => {
                     ref={inputRef}
                     defaultValue={link}
                     placeholder="링크를 입력해주세요"
+                    disabled={!updateLink}
                     onKeyDown={(e) => {
                         if (e.key === "Enter") {
                             handleUpdateLink();
                         }
                     }}
                 />
-                <button type="button" onClick={handleUpdateLink}>
-                    확인
-                </button>
+                {updateLink && (
+                    <button type="button" onClick={handleUpdateLink}>
+                        확인
+                    </button>
+                )}
                 {link && removePin && (
                     <button type="button" onClick={removePin}>
                         삭제
