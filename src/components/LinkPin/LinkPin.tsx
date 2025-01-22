@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import PinIcon from "@/components/icons/Pin";
 import styles from "./LinkPin.module.scss";
 
@@ -14,14 +14,17 @@ interface Props {
 const LinkPin = ({ x, y, link, updateLink, removePin }: Props) => {
     const inputRef = useRef<HTMLInputElement | null>(null);
     const wrapperRef = useRef<HTMLDivElement | null>(null);
+    const type = useMemo<"create" | "view">(() => (!!updateLink ? "create" : "view"), [updateLink]);
 
     const handleUpdateLink = () => {
+        if (type !== "create") return;
         const inputValue = inputRef.current?.value;
-        if (!inputValue || !updateLink) return;
-        updateLink(inputValue);
+        if (!inputValue) return;
+        updateLink?.(inputValue);
     };
 
     const handleRemovePin = () => {
+        if (type !== "create") return;
         const inputValue = inputRef.current?.value;
         if (inputValue) return null;
         removePin?.();
@@ -65,15 +68,17 @@ const LinkPin = ({ x, y, link, updateLink, removePin }: Props) => {
                         }
                     }}
                 />
-                {updateLink && (
-                    <button type="button" onClick={handleUpdateLink}>
-                        확인
-                    </button>
-                )}
-                {link && removePin && (
-                    <button type="button" onClick={removePin}>
-                        삭제
-                    </button>
+                {type === "create" && (
+                    <>
+                        <button type="button" onClick={handleUpdateLink}>
+                            확인
+                        </button>
+                        {link && (
+                            <button type="button" onClick={removePin}>
+                                삭제
+                            </button>
+                        )}
+                    </>
                 )}
             </div>
         </div>
