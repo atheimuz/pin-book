@@ -2,7 +2,7 @@
 
 import cx from "classnames";
 import { useProductStore } from "@/lib/store/product";
-import ProductItem from "@/app/page/[id]/ProductItem";
+import ProductItem, { ProductItemFallback } from "@/app/page/[id]/ProductItem";
 import styles from "./ProductList.module.scss";
 import { Suspense } from "react";
 
@@ -25,7 +25,7 @@ const ProductList = ({ list }: Props) => {
                             key={link}
                             className={cx(styles.item, { [styles.active]: summary?.link === link })}
                         >
-                            <Suspense fallback={<p>loading</p>}>
+                            <Suspense fallback={<ProductItemFallback />}>
                                 <ProductItem link={link} />
                             </Suspense>
                         </li>
