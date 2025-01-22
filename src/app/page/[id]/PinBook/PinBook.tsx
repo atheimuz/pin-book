@@ -27,7 +27,12 @@ const PinBook = ({ pins, image, onImageClick, onUpdateLink, onRemovePin }: PinBo
                         removePin={onRemovePin ? () => onRemovePin(index) : undefined}
                     />
                 ))}
-                <img className={styles.mainImage} src={image} onClick={onImageClick} />
+                    <img className={styles.mainImage} src={image} />
+                    <div
+                        className={cx(styles.flickerBox, { [styles.active]: !pins.length })}
+                        onClick={onImageClick}
+                    />
+                </div>
             </div>
             <ProductList list={pins.map((item) => item.link)} />
         </div>

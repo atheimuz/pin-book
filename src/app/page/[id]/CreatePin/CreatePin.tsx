@@ -10,7 +10,7 @@ const CreatePin = () => {
     const [localPins, setLocalPins] = useState<IProductPin[]>([]);
     const [localImage, setLocalImage] = useState<string | ArrayBuffer | null>(null);
 
-    const handleImageClick = (event: React.MouseEvent<HTMLImageElement>) => {
+    const handleImageClick = (event: React.MouseEvent<HTMLDivElement>) => {
         const img = event.currentTarget;
         const rect = img.getBoundingClientRect();
 
