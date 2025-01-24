@@ -2,7 +2,10 @@ import { IProduct } from "@/models/product";
 
 export const getProductAPI = async (link: string) => {
     try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URI}/api/product?link=${link}`);
+        const encodedLink = encodeURIComponent(link);
+        const res = await fetch(
+            `${process.env.NEXT_PUBLIC_API_URI}/api/product?link=${encodedLink}`
+        );
         const resJson = await res.json();
         const data: IProduct = resJson.data;
 
