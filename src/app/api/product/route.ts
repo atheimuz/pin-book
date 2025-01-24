@@ -3,11 +3,13 @@ import { fetchMetaData } from "@/utils/fetch-meta";
 
 export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
-    const link = searchParams.get("link");
+    const encodedLink = searchParams.get("link");
 
-    if (!link) {
+    if (!encodedLink) {
         return NextResponse.json({ status: 200, data: null });
     }
+
+    const link = decodeURIComponent(encodedLink);
 
     try {
         const response = await fetch(link, { cache: "no-store" });
