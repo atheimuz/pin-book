@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { IProductPin } from "@/models/product";
 import PlusIcon from "@/components/icons/Plus";
-import PinBook from "../PinBook";
+import PinBook from "@/app/page/[id]/PinBook";
 import styles from "./CreatePin.module.scss";
 
 const CreatePin = () => {

@@ -1,4 +1,4 @@
-import CreatePin from "@/app/page/[id]/CreatePin";
+import CreatePin from "@/app/create/CreatePin";
 import ProductSummary from "@/app/page/[id]/ProductSummary";
 import styles from "./page.module.scss";
 
