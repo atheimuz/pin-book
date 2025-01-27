@@ -1,3 +1,5 @@
+import LinkIcon from "@/components/icons/Link";
+import ScrapIcon from "@/components/icons/Scrap";
 import styles from "./ShareBox.module.scss";
 
 const ShareBox = () => {
@@ -5,11 +7,15 @@ const ShareBox = () => {
         <div className={styles.wrapper}>
             <ul className={styles.items}>
                 <li className={styles.item}>
-                    <div className={styles.icon} />
+                    <button type="button" className={styles.icon}>
+                        <LinkIcon />
+                    </button>
                     링크
                 </li>
                 <li className={styles.item}>
-                    <div className={styles.icon} />
+                    <button type="button" className={styles.icon}>
+                        <ScrapIcon />
+                    </button>
                     퍼가기
                 </li>
             </ul>
